@@ -35,8 +35,10 @@ query_caladapt <- function(var, model, scenario, coords,
                            url = 'http://api.cal-adapt.org/api/series/') {
   requireNamespace("purrr", quietly = TRUE)
   requireNamespace("tibble", quietly = TRUE)
+  if (model == 'livneh') {modscen = 'livneh'} else {
+    modscen = paste(model, scenario, sep = '_')}
   response <- httr::GET(url = paste0(url,
-                                     paste(var, timestep, model, scenario, sep = '_'),
+                                     paste(var, timestep, modscen, sep = '_'),
                                      '/', type, '/'),
                         query = list(pagesize = 100,
                                      g = paste0('{"type":"Point","coordinates":[', coords, ']}'),
@@ -51,5 +53,7 @@ query_caladapt <- function(var, model, scenario, coords,
            data = as.numeric(.data$data)) %>%
     tidyr::separate(source,
              into = c('variable', 'timestep', 'model', 'scenario'),
-             sep = '_')
+             sep = '_') %>%
+    mutate(scenario = case_when(model == 'livneh' ~ 'historical',
+                                TRUE ~ scenario))
 }
