@@ -26,6 +26,7 @@
 #' @import dplyr
 #' @importFrom tibble tibble
 #' @importFrom purrr map_chr
+#' @importFrom tidyr separate
 query_caladapt <- function(var, model, scenario, coords,
                            type = 'events', timestep = 'year', stat = 'mean',
                            url = 'http://api.cal-adapt.org/api/series/') {
@@ -43,8 +44,8 @@ query_caladapt <- function(var, model, scenario, coords,
   tibble::tibble(index = purrr::map_chr(dat$index, .f = function(x) x[[1]]),
                  data = purrr::map_chr(dat$data, .f = function(x) x[[1]]),
                  source = dat$name) %>%
-    mutate(index = as.Date(index),
-           data = as.numeric(data)) %>%
+    mutate(index = as.Date(.data$index),
+           data = as.numeric(.data$data)) %>%
     separate(source,
              into = c('variable', 'timestep', 'model', 'scenario'),
              sep = '_')
