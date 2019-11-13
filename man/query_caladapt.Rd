@@ -13,7 +13,7 @@ query_caladapt(var, model, scenario, coords, type = "events",
 
 \item{model}{Name of the climate model}
 
-\item{scenario}{Name of the climate scenario}
+\item{scenario}{Name of the climate scenario (RCP): 'rcp45' or 'rcp85'}
 
 \item{coords}{Coordinates of the location for which data is desired}
 

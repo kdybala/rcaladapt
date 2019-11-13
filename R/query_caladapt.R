@@ -2,7 +2,7 @@
 #'
 #' @param var Name of the variable
 #' @param model Name of the climate model
-#' @param scenario Name of the climate scenario
+#' @param scenario Name of the climate scenario (RCP): 'rcp45' or 'rcp85'
 #' @param coords Coordinates of the location for which data is desired
 #' @param type Return data ('events') or 'rasters'
 #' @param timestep Annual ('year'), monthly, or daily data
@@ -27,6 +27,9 @@
 #' @importFrom tibble tibble
 #' @importFrom purrr map_chr
 #' @importFrom tidyr separate
+#' @example
+#' query_caladapt(var = 'pr', scenario = 'rcp45', model = 'HadGEM2-ES', coords = '-122.545886,38.248392')
+#'
 query_caladapt <- function(var, model, scenario, coords,
                            type = 'events', timestep = 'year', stat = 'mean',
                            url = 'http://api.cal-adapt.org/api/series/') {
@@ -46,7 +49,7 @@ query_caladapt <- function(var, model, scenario, coords,
                  source = dat$name) %>%
     mutate(index = as.Date(.data$index),
            data = as.numeric(.data$data)) %>%
-    separate(source,
+    tidyr::separate(source,
              into = c('variable', 'timestep', 'model', 'scenario'),
              sep = '_')
 }
