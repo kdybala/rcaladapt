@@ -27,8 +27,6 @@
 #' @importFrom tibble tibble
 #' @importFrom purrr map_chr
 #' @importFrom tidyr separate
-#' @example
-#' query_caladapt(var = 'pr', scenario = 'rcp45', model = 'HadGEM2-ES', coords = '-122.545886,38.248392')
 #'
 query_caladapt <- function(var, model, scenario, coords,
                            type = 'events', timestep = 'year', stat = 'mean',
