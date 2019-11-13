@@ -1,0 +1,13 @@
+Package: rcaladapt
+Title: Access climate data from Cal-Adapt
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kristen",
+           family = "Dybala",
+           role = c("aut", "cre"),
+           email = "kdybala@pointblue.org",
+           comment = c(ORCID = "0000-0002-2787-4600"))
+Description: Access climate data from Cal-Adapt.
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
