@@ -22,10 +22,10 @@ The goal of rcaladapt is to access climate data from Cal-Adapt.
 
 ## Installation
 
-You can install the development version of rcaladapt from [Github](https://github.com/pointblue/rcaladapt) with:
+You can install the development version of rcaladapt from [Github](https://github.com/kdybala/rcaladapt) with:
 
 ``` r
-devtools::install_github("pointblue/rcaladapt")
+devtools::install_github("kdybala/rcaladapt")
 ```
 <!-- You can install the released version of rcaladapt from [CRAN](https://CRAN.R-project.org) with: -->
 

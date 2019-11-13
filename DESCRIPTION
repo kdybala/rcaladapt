@@ -11,3 +11,5 @@ Description: Access climate data from Cal-Adapt.
 License: What license it uses
 Encoding: UTF-8
 LazyData: true
+URL: https://github.com/kdybala/rcaladapt
+BugReports: https://github.com/kdybala/rcaladapt/issues
