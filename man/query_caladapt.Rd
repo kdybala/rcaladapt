@@ -33,13 +33,18 @@ Query Cal-Adapt data
 }
 \details{
 Options for variables include 'tasmax' and 'tasmin' (max and min
-temperatures) or 'pr' (precipitation). Note that precipitation is returned in
-units of inches per day (even for timestep = 'year'), so will need to be
-multiplied by 365 to generate annual totals. The full list of available models
-and additional variables are provided here: https://berkeley-gif.github.io/caladapt-docs/data-catalog.html#climate-variables).
-But note that only annual average tasmin, tasmax, and pr have been checked
-against Cal-Adapt website outputs to date.
+  temperatures) or 'pr' (precipitation). Note that precipitation is returned
+  in units of inches per day (even for timestep = 'year'), so will need to
+  be multiplied by 365 to generate annual totals. The full list of available
+  models and additional variables are provided at
+  \url{https://berkeley-gif.github.io/caladapt-docs/data-catalog.html#climate-variables}.
+  But note that only annual average tasmin, tasmax, and pr have been checked
+  against Cal-Adapt website outputs to date.
 
-Coordinates should be provided as a string in decimal degrees separated only
-by a comma: 'long,lat'
+  Coordinates should be provided as a string in decimal degrees separated
+  only by a comma: 'long,lat'
+}
+\examples{
+query_caladapt(var = 'pr', scenario = 'rcp45', model = 'HadGEM2-ES', coords = '-122.545886,38.248392')
+
 }
