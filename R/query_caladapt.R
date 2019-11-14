@@ -11,15 +11,16 @@
 #'
 #' @return For type = 'events', returns a tibble. Untested for type = 'rasters'.
 #' @details Options for variables include 'tasmax' and 'tasmin' (max and min
-#' temperatures) or 'pr' (precipitation). Note that precipitation is returned in
-#' units of inches per day (even for timestep = 'year'), so will need to be
-#' multiplied by 365 to generate annual totals. The full list of available models
-#' and additional variables are provided here: https://berkeley-gif.github.io/caladapt-docs/data-catalog.html#climate-variables).
-#' But note that only annual average tasmin, tasmax, and pr have been checked
-#' against Cal-Adapt website outputs to date.
+#'   temperatures) or 'pr' (precipitation). Note that precipitation is returned
+#'   in units of inches per day (even for timestep = 'year'), so will need to
+#'   be multiplied by 365 to generate annual totals. The full list of available
+#'   models and additional variables are provided here:
+#'   https://berkeley-gif.github.io/caladapt-docs/data-catalog.html#climate-variables).
+#'   But note that only annual average tasmin, tasmax, and pr have been checked
+#'   against Cal-Adapt website outputs to date.
 #'
-#' Coordinates should be provided as a string in decimal degrees separated only
-#' by a comma: 'long,lat'
+#'   Coordinates should be provided as a string in decimal degrees separated
+#'   only by a comma: 'long,lat'
 #'
 #' @export
 #' @import httr
@@ -51,7 +52,7 @@ query_caladapt <- function(var, model, scenario, coords,
            data = as.numeric(.data$data)) %>%
     tidyr::separate(source,
              into = c('variable', 'timestep', 'model', 'scenario'),
-             sep = '_') %>%
+             sep = '_', fill = 'right') %>%
     mutate(scenario = case_when(model == 'livneh' ~ 'historical',
                                 TRUE ~ scenario))
 }

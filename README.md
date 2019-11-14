@@ -54,7 +54,7 @@ head(example1)
 The function returns a tibble, to facilitate further analysis and
 plotting:
 
-<img src="man/figures/README-plot1-1.png" width="100%" />
+<img src="man/figures/README-plot1-1.png" width="75%" />
 
 Use purrr::map functions to repeat for several climate models,
 scenarios, or variables:
@@ -66,12 +66,10 @@ example2 <- purrr::map_dfr(models, .f = function(x) {
   query_caladapt(var = 'tasmin', scenario = 'rcp85', model = x, 
                  coords = '-122.545886,38.248392')
 })
-#> Warning: Expected 4 pieces. Missing pieces filled with `NA` in 64 rows [1,
-#> 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, ...].
 ggplot(example2, aes(index, data)) + geom_line(aes(color = model)) + 
   ylab('Minimum Temperature (F)') + xlab('Year')
 ```
 
-<img src="man/figures/README-example2-1.png" width="100%" />
+<img src="man/figures/README-example2-1.png" width="75%" />
 
 <!-- In that case, don't forget to commit and push the resulting figure files, so they display on GitHub! -->
