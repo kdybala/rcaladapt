@@ -36,8 +36,11 @@ query_caladapt <- function(var, model, scenario, coords,
                            url = 'http://api.cal-adapt.org/api/series/') {
   requireNamespace("purrr", quietly = TRUE)
   requireNamespace("tibble", quietly = TRUE)
-  if (model == 'livneh') {modscen = 'livneh'} else {
-    modscen = paste(model, scenario, sep = '_')}
+  if (model %in% c('livneh', 'modeled-envelope-variability')) {
+    modscen = model
+  } else {
+    modscen = paste(model, scenario, sep = '_')
+  }
   response <- httr::GET(url = paste0(url,
                                      paste(var, timestep, modscen, sep = '_'),
                                      '/', type, '/'),
